@@ -2,86 +2,397 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Caleb Wiese</title>
 
   <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #121a2f;
+      --border: #24304d;
+      --text: #f3f4f6;
+      --muted: #aab3c5;
+      --accent: #7cc4ff;
+      --accent-strong: #4ea8ff;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
     }
 
     .container {
-      padding: 80px 20px;
-      max-width: 800px;
-      margin: auto;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 32px;
+    }
+
+    .nav-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 56px 0 36px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin: 0 0 18px;
+      max-width: 760px;
     }
 
-    p {
-      font-size: 1.2rem;
-      color: #cbd5f5;
+    .hero-copy {
+      max-width: 700px;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #3b82f6;
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 10px;
       text-decoration: none;
+      font-weight: 600;
+      transition: 0.18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-strong);
+      color: #08101d;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .highlight {
+      background: rgba(18, 26, 47, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .highlight-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .highlight-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    section {
+      padding-top: 72px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin: 0 0 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .about-card {
+      background: rgba(18, 26, 47, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 760px;
+    }
+
+    .about-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .project {
+      background: rgba(18, 26, 47, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: 0.18s ease;
+    }
+
+    .project:hover {
+      border-color: #3d5c8a;
+      transform: translateY(-2px);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .project h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .project-tag {
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-box {
+      background: rgba(18, 26, 47, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 760px;
+    }
+
+    .contact-box p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding-top: 72px;
+      color: #7d879b;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
       border-radius: 8px;
-      transition: 0.2s;
     }
 
-    .btn:hover {
-      background: #2563eb;
-    }
+    @media (max-width: 800px) {
+      .highlights {
+        grid-template-columns: 1fr;
+      }
 
-    .section {
-      margin-top: 80px;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 20px;
+      .nav {
+        align-items: flex-start;
+        gap: 14px;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Caleb Wiese</h1>
-    <p>Engineering Student • Risk & Systems • Builder</p>
+    <nav class="nav">
+      <div class="nav-name">Caleb Wiese</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
 
-    <a class="btn" href="#">View Resume</a>
+    <header class="hero">
+      <div class="eyebrow">Engineering • Systems • Building</div>
+      <h1>I build practical, thoughtful projects across engineering, risk, and product.</h1>
+      <p class="hero-copy">
+        I’m Caleb Wiese, an engineering student focused on systems thinking, technical problem-solving,
+        and building projects that connect analysis with real-world impact.
+      </p>
 
-    <div class="section">
-      <h2>Projects</h2>
-
-      <div class="card">
-        <h3>SafeStart</h3>
-        <p>Risk-based safety platform for parking and infrastructure.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">View Resume</a>
+        <a class="btn btn-secondary" href="#projects">See Projects</a>
       </div>
 
-      <div class="card">
-        <h3>Sizzle</h3>
-        <p>Social recipe-sharing app connecting friends and food tracking.</p>
+      <div class="highlights">
+        <div class="highlight">
+          <div class="highlight-label">Focus</div>
+          <div class="highlight-value">Engineering, systems, and risk</div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-label">Current work</div>
+          <div class="highlight-value">Building technical and product projects</div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-label">Interests</div>
+          <div class="highlight-value">Infrastructure, startups, and applied problem-solving</div>
+        </div>
       </div>
-    </div>
+    </header>
 
-    <div class="section">
-      <h2>Contact</h2>
-      <p>Email: your@email.com</p>
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about-card">
+        <p>
+          I like working on projects that sit at the intersection of engineering, decision-making,
+          and execution. My background is shaped by technical coursework, design work, and hands-on
+          projects, and I’m especially interested in turning messy ideas into clear systems that work.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-copy">
+        A few projects that reflect how I think: practical, analytical, and built around solving real problems.
+      </p>
+
+      <div class="project-list">
+        <article class="project">
+          <div class="project-top">
+            <h3>SafeStart</h3>
+            <div class="project-tag">Product / Safety</div>
+          </div>
+          <p>
+            A concept focused on safer parking and infrastructure experiences, built around risk-aware design
+            and better user decision-making.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <h3>Sizzle</h3>
+            <div class="project-tag">Consumer App</div>
+          </div>
+          <p>
+            A social recipe-sharing platform designed to help friends share food ideas while reducing waste
+            through lightweight food tracking.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <h3>Engineering & Analysis Work</h3>
+            <div class="project-tag">Technical</div>
+          </div>
+          <p>
+            Coursework and technical projects involving systems thinking, modeling, engineering design,
+            and structured problem-solving across a range of applications.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-box">
+        <p>
+          Want to connect, collaborate, or talk about a project? Reach out here.
+        </p>
+        <a class="btn btn-secondary" href="mailto:your@email.com">Email Me</a>
+      </div>
+    </section>
+
+    <div class="footer">
+      Built by Caleb Wiese.
     </div>
   </div>
 </body>
