@@ -8,7 +8,6 @@
   <style>
     :root {
       --bg: #08101f;
-      --bg-soft: #0d1730;
       --surface: rgba(17, 27, 53, 0.72);
       --surface-strong: rgba(20, 32, 62, 0.9);
       --border: rgba(130, 160, 220, 0.18);
@@ -19,7 +18,6 @@
       --accent: #7cc4ff;
       --accent-strong: #4ea8ff;
       --max-width: 1100px;
-      --radius-sm: 12px;
       --radius-md: 18px;
       --radius-lg: 26px;
       --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
@@ -47,11 +45,6 @@
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     .container {
@@ -366,6 +359,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-bottom: 16px;
     }
 
     .meta-pill {
@@ -375,6 +369,22 @@
       border-radius: 999px;
       padding: 6px 10px;
       background: rgba(255,255,255,0.02);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
     }
 
     .contact-box {
@@ -457,15 +467,15 @@
     <header class="hero">
       <div class="hero-copy-wrap">
         <div class="eyebrow">Engineering • Systems • Product Thinking</div>
-        <h1>Building practical ideas with technical depth and real-world use.</h1>
+        <h1>Building practical ideas with technical depth and real-world impact.</h1>
         <p class="hero-copy">
-          I’m Caleb Wiese, an engineering student interested in systems, infrastructure,
-          product development, and applied problem-solving. I like building projects that
-          turn complex ideas into something clear, useful, and executable.
+          I’m Caleb Wiese, an electrical engineering student at the University of Virginia
+          interested in systems, infrastructure, product development, and applied problem-solving.
+          I like building projects that turn complex ideas into something clear, useful, and executable.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#">View Resume</a>
+          <a class="btn btn-primary" href="https://docs.google.com/document/d/1pfLGUDG4f0QLMa2VeuoIPwfGrGDKxJXL/edit" target="_blank" rel="noopener noreferrer">View Resume</a>
           <a class="btn btn-secondary" href="#projects">Selected Projects</a>
         </div>
       </div>
@@ -498,8 +508,8 @@
 
       <div class="highlight">
         <div class="highlight-label">Projects</div>
-        <div class="highlight-value">Product concepts and technical analysis</div>
-        <div class="highlight-copy">From consumer-facing ideas to engineering and modeling work.</div>
+        <div class="highlight-value">Product concepts and technical builds</div>
+        <div class="highlight-copy">From hackathon systems to consumer-facing ideas and analysis work.</div>
       </div>
 
       <div class="highlight">
@@ -551,16 +561,21 @@
             <div class="project-tag">Hackathon / AI + Hardware</div>
           </div>
           <p>
-            A real-time scam call detection system built around a Raspberry Pi that listens to speakerphone calls,
-            detects scam patterns, warns older adults through voice, lights, and display alerts, and notifies trusted
-            family through a secure dashboard. Built with a mix of local speech processing, FastAPI, Next.js, Auth0,
-            Gemini, and ElevenLabs. 3rd Overall at HooHacks 2026.
+            ScamShield is a real-time scam call detection system built for older adults. As a team, we came up
+            with the project creatively together and built it into a full hardware-plus-software system around a
+            Raspberry Pi, live scam detection, and family alerts. My main contribution was building the secure
+            dashboard experience that let trusted family members monitor device status, alerts, transcripts, and
+            timestamps remotely. The project won 3rd Overall at HooHacks 2026.
           </p>
           <div class="project-meta">
             <span class="meta-pill">HooHacks 2026</span>
             <span class="meta-pill">3rd Overall</span>
+            <span class="meta-pill">Dashboard build</span>
             <span class="meta-pill">AI + hardware</span>
-            <span class="meta-pill">Next.js dashboard</span>
+          </div>
+          <div class="project-links">
+            <a href="https://devpost.com/software/scamshield-87rbxe?ref_content=my-projects-tab&ref_feature=my_projects" target="_blank" rel="noopener noreferrer">View Devpost</a>
+            <a href="https://github.com/TristanGru/ScamShield" target="_blank" rel="noopener noreferrer">View GitHub</a>
           </div>
         </article>
 
@@ -627,10 +642,10 @@
 
       <div class="contact-box">
         <p>
-          The fastest way to reach me is by email. Once you upload your resume, you can also make the resume
-          button at the top point directly to it.
+          The fastest way to reach me is by email. I’m always open to talking about engineering,
+          building, and new project ideas.
         </p>
-        <a class="btn btn-secondary" href="mailto:your@email.com">Email Me</a>
+        <a class="btn btn-secondary" href="mailto:calebwiese18@gmail.com">calebwiese18@gmail.com</a>
       </div>
     </section>
 
