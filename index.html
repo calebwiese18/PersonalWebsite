@@ -17,6 +17,9 @@
       --muted-2: #7f8ba3;
       --accent: #7cc4ff;
       --accent-strong: #4ea8ff;
+      --gold: #f4c542;
+      --gold-border: rgba(244, 197, 66, 0.55);
+      --gold-bg: rgba(244, 197, 66, 0.1);
       --max-width: 1100px;
       --radius-md: 18px;
       --radius-lg: 26px;
@@ -84,6 +87,15 @@
 
     .nav-links a:hover {
       color: var(--text);
+    }
+
+    .nav-resume {
+      color: var(--accent) !important;
+      font-weight: 600;
+    }
+
+    .nav-resume:hover {
+      color: #9bd3ff !important;
     }
 
     .hero {
@@ -339,19 +351,29 @@
       background: rgba(255,255,255,0.02);
     }
 
-    .project-links {
+    .award-pill {
+      color: #f8df8b;
+      border: 1px solid var(--gold-border);
+      background: linear-gradient(180deg, rgba(244, 197, 66, 0.18), rgba(244, 197, 66, 0.06));
+      box-shadow: inset 0 0 0 1px rgba(255, 214, 102, 0.08);
+    }
+
+    .project-links,
+    .contact-links {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
     }
 
-    .project-links a {
+    .project-links a,
+    .contact-links a {
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--accent);
     }
 
-    .project-links a:hover {
+    .project-links a:hover,
+    .contact-links a:hover {
       text-decoration: underline;
     }
 
@@ -451,6 +473,7 @@
     <nav class="nav">
       <div class="nav-name">Caleb Wiese</div>
       <div class="nav-links">
+        <a href="Caleb-Wiese-Resume.pdf" target="_blank" class="nav-resume">Resume</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#coursework">Coursework & Skills</a>
@@ -460,16 +483,15 @@
 
     <header class="hero">
       <div class="hero-copy-wrap">
-        <div class="eyebrow">Electrical Engineering • Systems • Building</div>
+        <div class="eyebrow">*Electrical Engineering • Systems • Building</div>
         <h1>Building practical ideas with technical depth and real-world impact.</h1>
         <p class="hero-copy">
-          I’m Caleb Wiese, an electrical engineering student at the University of Virginia
+          *I’m Caleb Wiese, an electrical engineering student at the University of Virginia
           interested in systems, product development, and applied problem-solving. I like
           building projects that turn complex ideas into something clear, useful, and executable.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="Caleb-Wiese-Resume.pdf" target="_blank">View Resume</a>
           <a class="btn btn-secondary" href="#projects">Selected Projects</a>
         </div>
       </div>
@@ -487,7 +509,7 @@
           </div>
           <div class="hero-panel-item">
             <span>Interests</span>
-            <strong>Systems, technical design, and building useful products</strong>
+            <strong>*Systems, technical design, and building useful products</strong>
           </div>
         </div>
       </aside>
@@ -497,9 +519,9 @@
       <div class="section-header">
         <div class="section-kicker">About</div>
         <div>
-          <h2 class="section-title">A technical mindset with an eye for execution.</h2>
+          <h2 class="section-title">*A technical mindset with an eye for execution.</h2>
           <p class="section-copy">
-            I’m most interested in the space where engineering, product, and problem-solving overlap.
+            *I’m most interested in the space where engineering, product, and problem-solving overlap.
             Whether I’m working through a technical problem or building something new, I care about
             clarity, usability, and making ideas work in practice.
           </p>
@@ -508,7 +530,7 @@
 
       <div class="about-card">
         <p>
-          My work is shaped by systems thinking, analytical problem-solving, and a bias toward building.
+          *My work is shaped by systems thinking, analytical problem-solving, and a bias toward building.
           I’m especially drawn to projects that require both technical depth and thoughtful execution,
           whether that means software, hardware, or the interface between the two.
         </p>
@@ -534,16 +556,15 @@
             <div class="project-tag">Hackathon / AI + Hardware</div>
           </div>
           <p>
-            ScamShield is a real-time scam call detection system built for older adults. As a team,
+            *ScamShield is a real-time scam call detection system built for older adults. As a team,
             we developed the project concept together and built it into a full hardware-plus-software
             system around a Raspberry Pi, live scam detection, and family alerts. My main contribution
             was building the secure dashboard experience that let trusted family members monitor device
-            status, alerts, transcripts, and timestamps remotely. The project won 3rd Overall at
-            HooHacks 2026.
+            status, alerts, transcripts, and timestamps remotely.
           </p>
           <div class="project-meta">
             <span class="meta-pill">HooHacks 2026</span>
-            <span class="meta-pill">3rd Overall</span>
+            <span class="meta-pill award-pill">Award Winning</span>
             <span class="meta-pill">Dashboard build</span>
             <span class="meta-pill">AI + hardware</span>
           </div>
@@ -625,9 +646,12 @@
 
       <div class="contact-box">
         <p>
-          The fastest way to reach me is by email.
+          The fastest way to reach me is by email or LinkedIn.
         </p>
-        <a class="btn btn-secondary" href="mailto:calebwiese18@gmail.com">calebwiese18@gmail.com</a>
+        <div class="contact-links">
+          <a class="btn btn-secondary" href="mailto:calebwiese18@gmail.com">calebwiese18@gmail.com</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/caleb-wiese" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
       </div>
     </section>
 
