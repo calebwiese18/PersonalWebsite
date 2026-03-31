@@ -145,13 +145,6 @@
       font-size: 1.08rem;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
     .btn {
       min-height: 46px;
       padding: 0 18px;
@@ -268,9 +261,8 @@
       font-size: 1rem;
     }
 
-    .about-card,
     .contact-box {
-      background: var(--surface);
+      background: linear-gradient(180deg, rgba(18, 28, 54, 0.9), rgba(10, 17, 31, 0.92));
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 28px;
@@ -278,11 +270,12 @@
       box-shadow: var(--shadow);
     }
 
-    .about-card p,
     .contact-box p {
       margin: 0;
       color: var(--muted);
       font-size: 1rem;
+      margin-bottom: 18px;
+      max-width: 560px;
     }
 
     .project-list {
@@ -408,15 +401,6 @@
       margin-bottom: 10px;
     }
 
-    .contact-box {
-      background: linear-gradient(180deg, rgba(18, 28, 54, 0.9), rgba(10, 17, 31, 0.92));
-    }
-
-    .contact-box p {
-      margin-bottom: 18px;
-      max-width: 560px;
-    }
-
     .footer {
       padding-top: 88px;
       color: var(--muted-2);
@@ -474,7 +458,6 @@
       <div class="nav-name">Caleb Wiese</div>
       <div class="nav-links">
         <a href="Caleb-Wiese-Resume.pdf" target="_blank" class="nav-resume">Resume</a>
-        <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#coursework">Coursework & Skills</a>
         <a href="#contact">Contact</a>
@@ -489,10 +472,6 @@
           I’m an electrical engineering student at the University of Virginia interested in systems,
           product development, and building practical things that work.
         </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-secondary" href="#projects">Selected Projects</a>
-        </div>
       </div>
 
       <aside class="hero-panel">
@@ -514,27 +493,11 @@
       </aside>
     </header>
 
-    <section id="about">
-      <div class="section-header">
-        <div class="section-kicker">About</div>
-        <div>
-          <h2 class="section-title">About Me</h2>
-          <p class="section-copy">
-            I like working on projects that combine technical depth, clear thinking, and strong execution.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section id="projects">
       <div class="section-header">
         <div class="section-kicker">Projects</div>
         <div>
-          <h2 class="section-title">Work that reflects how I build.</h2>
-          <p class="section-copy">
-            A small selection of projects and current work focused on useful systems, strong execution,
-            and practical outcomes.
-          </p>
+          <h2 class="section-title">Selected Projects</h2>
         </div>
       </div>
 
@@ -560,6 +523,26 @@
           <div class="project-links">
             <a href="https://devpost.com/software/scamshield-87rbxe?ref_content=my-projects-tab&ref_feature=my_projects" target="_blank" rel="noopener noreferrer">View Devpost</a>
             <a href="https://github.com/TristanGru/ScamShield" target="_blank" rel="noopener noreferrer">View GitHub</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <h3>Voice Changer</h3>
+            <div class="project-tag">Signals &amp; Systems / In Development</div>
+          </div>
+          <p>
+            A final Signals and Systems project focused on building a voice changer using Fourier series.
+            The goal is to transform an audio file so it can sound robotic, deeper, higher-pitched, and
+            altered in other ways by modifying its frequency content. The project is still in development,
+            and I plan to add a Jupyter notebook link or downloadable file once it is complete so visitors
+            can explore or use it directly.
+          </p>
+          <div class="project-meta">
+            <span class="meta-pill">Fourier series</span>
+            <span class="meta-pill">Audio processing</span>
+            <span class="meta-pill">Signals &amp; Systems</span>
+            <span class="meta-pill">In development</span>
           </div>
         </article>
 
