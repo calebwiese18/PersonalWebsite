@@ -1,854 +1,791 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Caleb Wiese — Electrical Engineering, UVA</title>
-  <meta name="description" content="Caleb Wiese is an electrical engineering student at the University of Virginia (Class of 2028) focused on hardware, PCB design, digital design, and embedded systems. Seeking Summer 2027 internships." />
-  <meta name="author" content="Caleb Wiese" />
-
-  <meta property="og:title" content="Caleb Wiese — Electrical Engineering, UVA" />
-  <meta property="og:description" content="EE student at UVA focused on hardware, PCB design, digital design, and embedded systems. Seeking Summer 2027 internships." />
-  <meta property="og:url" content="https://calebwiese.com" />
-  <meta property="og:type" content="website" />
-
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23c0392b'/><text x='16' y='22' font-family='Georgia,serif' font-size='17' fill='white' text-anchor='middle'>CW</text></svg>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caleb Wiese | Electrical Engineering, UVA</title>
+  <meta name="description" content="Caleb Wiese is an electrical engineering student at the University of Virginia (May 2028) working on PCB design, embedded systems, and EMI noise cancellation for a portable MRI. Seeking Summer 2027 internships.">
+  <meta name="author" content="Caleb Wiese">
+  <meta property="og:title" content="Caleb Wiese | Electrical Engineering, UVA">
+  <meta property="og:description" content="EE student at UVA focused on PCB design, embedded systems, and digital design. Seeking Summer 2027 hardware internships.">
+  <meta property="og:url" content="https://calebwiese.com">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1d5a43">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231d5a43'/><rect x='9' y='9' width='14' height='14' rx='1.5' fill='none' stroke='%23d08a4c' stroke-width='2'/><circle cx='16' cy='16' r='2.5' fill='%23d08a4c'/></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f5f2ee;
-      --bg-2: #edeae5;
+      --paper: #f4f6f5;
       --surface: #ffffff;
-      --border: #dedad4;
-      --border-strong: #c5bfb7;
-      --text: #1c1917;
-      --muted: #6b6560;
-      --muted-2: #8a847d;
-      --accent: #c0392b;
-      --accent-light: #fdf1f0;
-      --ink: #2c2825;
-      --green: #2f7a4a;
-      --green-light: #eaf5ee;
-      --max-width: 1020px;
-      --radius: 3px;
-      --radius-md: 6px;
+      --ink: #15211c;
+      --muted: #56655e;
+      --rule: #d5ddd9;
+      --mask: #1d5a43;        /* soldermask green */
+      --mask-deep: #133f2f;
+      --copper: #b8692f;
+      --copper-soft: #f6e7da;
+      --silk: #eef3ef;
+      --focus: #b8692f;
+      --maxw: 1080px;
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #0f1d17;
+        --surface: #15261f;
+        --ink: #e9efeb;
+        --muted: #a3b3ab;
+        --rule: #2a3d34;
+        --mask: #2b7a5b;
+        --mask-deep: #1b4e3a;
+        --copper: #e0995c;
+        --copper-soft: #3a2a1d;
+        --silk: #eef3ef;
+        --focus: #e0995c;
+        color-scheme: dark;
+      }
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
-      font-family: 'Instrument Sans', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-variation-settings: "wdth" 100;
+      font-size: 17px;
       line-height: 1.6;
-      font-size: 16px;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 28px 100px;
-    }
-
-    /* NAV */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 0 18px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-name {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      font-size: 0.88rem;
-      color: var(--muted);
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-resume {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem !important;
-      color: var(--accent) !important;
-      border: 1px solid var(--accent);
-      padding: 5px 12px;
-      border-radius: var(--radius);
-      transition: background 0.15s, color 0.15s !important;
-    }
-
-    .nav-resume:hover {
-      background: var(--accent) !important;
-      color: #fff !important;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 64px 0 64px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.74rem;
-      color: var(--green);
-      background: var(--green-light);
-      border: 1px solid #c4e3cf;
-      padding: 5px 11px;
-      border-radius: 999px;
-      margin-bottom: 26px;
-    }
-
-    .availability::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
-    .hero-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.76rem;
-      color: var(--muted-2);
-      letter-spacing: 0.04em;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-family: 'Lora', Georgia, serif;
-      font-size: clamp(3.2rem, 8vw, 6.4rem);
-      font-weight: 400;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
       color: var(--ink);
-      margin-bottom: 32px;
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
+    a { color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
 
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 60px;
-      align-items: start;
-      margin-top: 40px;
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+    .skip {
+      position: absolute; left: -999px; top: 8px;
+      background: var(--surface); padding: 8px 14px; border-radius: 6px; z-index: 50;
     }
+    .skip:focus { left: 12px; }
 
-    .hero-copy {
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 540px;
-      line-height: 1.75;
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid var(--rule);
     }
-
-    .hero-copy p + p { margin-top: 16px; }
-
-    .hero-copy strong {
-      color: var(--text);
-      font-weight: 500;
+    .site-header .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; height: 62px;
     }
-
-    .hero-cta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 10px 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
-    }
-
-    .btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover { background: #a93226; color: #fff; }
-
-    .hero-aside { padding-top: 6px; }
-
-    .hero-aside-row {
-      display: flex;
-      flex-direction: column;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-aside-row:first-child { padding-top: 0; }
-    .hero-aside-row:last-child { border-bottom: none; }
-
-    .hero-aside-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted-2);
-      letter-spacing: 0.04em;
-      margin-bottom: 3px;
-    }
-
-    .hero-aside-value {
-      font-size: 0.95rem;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* SECTION */
-    section { padding-top: 80px; scroll-margin-top: 20px; }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 36px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    h2 {
-      font-family: 'Lora', Georgia, serif;
-      font-size: 1.9rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-    }
-
-    .section-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted-2);
-    }
-
-    /* CARDS / PROJECTS */
-    .project-list {
-      display: grid;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-
-    .project {
-      background: var(--surface);
-      padding: 28px 30px;
-      transition: background 0.15s;
-    }
-
-    .project:hover { background: #fdfcfb; }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 6px;
-    }
-
-    .project h3 {
-      font-family: 'Lora', Georgia, serif;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--ink);
+    .brand {
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      font-variation-settings: "wdth" 112;
       letter-spacing: -0.01em;
     }
+    .site-nav { display: flex; align-items: center; gap: 26px; }
+    .site-nav a {
+      text-decoration: none; font-size: 0.93rem; color: var(--muted);
+    }
+    .site-nav a:hover { color: var(--ink); }
+    .site-nav .nav-cta {
+      color: #fff; background: var(--mask);
+      padding: 7px 14px; border-radius: 6px; font-weight: 600;
+    }
+    .site-nav .nav-cta:hover { background: var(--mask-deep); color: #fff; }
 
-    .project-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.74rem;
-      color: var(--muted-2);
-      margin-bottom: 14px;
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font: inherit; font-size: 0.95rem; font-weight: 600;
+      padding: 11px 18px; border-radius: 7px;
+      text-decoration: none; border: 1.5px solid var(--rule);
+      color: var(--ink); background: var(--surface);
+    }
+    .btn:hover { border-color: var(--ink); }
+    .btn-primary { background: var(--mask); border-color: var(--mask); color: #fff; }
+    .btn-primary:hover { background: var(--mask-deep); border-color: var(--mask-deep); }
+    .btn svg { width: 17px; height: 17px; flex: none; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding-top: 72px; padding-bottom: 56px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px; align-items: center;
+    }
+    .status {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 0.88rem; font-weight: 600; color: var(--mask);
+      margin-bottom: 22px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .status { color: #7fd0a8; }
+    }
+    .status::before {
+      content: ""; width: 9px; height: 9px; border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 22%, transparent);
+    }
+    h1 {
+      font-size: clamp(3rem, 7.4vw, 5.6rem);
+      font-weight: 800;
+      font-variation-settings: "wdth" 118;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      margin-bottom: 24px;
+    }
+    .lede {
+      font-size: 1.16rem; color: var(--muted);
+      max-width: 34em; margin-bottom: 30px;
+    }
+    .lede strong { color: var(--ink); font-weight: 600; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .board { width: 100%; height: auto; }
+    .board .trace {
+      fill: none; stroke: var(--copper); stroke-width: 3;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .board .pad { fill: var(--copper); }
+    .board .silk { fill: var(--silk); font-family: 'Archivo', sans-serif; }
+    .board .silk-line { fill: none; stroke: var(--silk); stroke-width: 1.4; opacity: 0.85; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .board .trace {
+        stroke-dasharray: var(--len, 400);
+        stroke-dashoffset: var(--len, 400);
+        animation: route 1.3s cubic-bezier(.6,.1,.3,1) forwards;
+        animation-delay: var(--d, 0s);
+      }
+      .board .pad, .board .pad-label {
+        opacity: 0; animation: lit .35s ease forwards;
+        animation-delay: calc(var(--d, 0s) + 1.05s);
+      }
+      @keyframes route { to { stroke-dashoffset: 0; } }
+      @keyframes lit { to { opacity: 1; } }
     }
 
-    .project-status {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      white-space: nowrap;
-      padding: 3px 8px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg);
+    /* ---------- Fact strip ---------- */
+    .facts {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
     }
+    .fact { padding: 20px 22px 20px 0; }
+    .fact + .fact { padding-left: 22px; border-left: 1px solid var(--rule); }
+    .fact dt { font-size: 0.85rem; color: var(--muted); margin-bottom: 2px; }
+    .fact dd { font-weight: 600; font-size: 1.02rem; line-height: 1.35; }
 
-    .project-status.award {
-      color: #92651a;
-      background: #fef3d0;
-      border-color: #f0d88a;
+    /* ---------- Sections ---------- */
+    section { padding: 88px 0 0; scroll-margin-top: 70px; }
+    .section-head { margin-bottom: 30px; max-width: 40em; }
+    h2 {
+      font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+      font-weight: 750;
+      font-variation-settings: "wdth" 112;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
     }
+    .section-head p { color: var(--muted); margin-top: 8px; }
 
-    .project-status.active {
-      color: var(--green);
-      background: var(--green-light);
-      border-color: #c4e3cf;
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 14px;
-      max-width: 700px;
-    }
-
-    .project ul.highlights {
-      list-style: none;
-      display: grid;
-      gap: 6px;
-      margin-bottom: 18px;
-      max-width: 700px;
-    }
-
-    .project ul.highlights li {
-      color: var(--muted);
-      font-size: 0.93rem;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .project ul.highlights li::before {
-      content: '›';
-      position: absolute;
-      left: 2px;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .project ul.highlights strong { color: var(--text); font-weight: 500; }
-
-    .project-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .project-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      padding: 3px 9px;
-      border-radius: var(--radius);
-    }
-
-    .project-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .project-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--accent);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s;
-    }
-
-    .project-links a:hover { border-color: var(--accent); }
-
-    /* EXPERIENCE TIMELINE */
-    .exp-list { display: grid; gap: 0; }
-
-    .exp {
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 28px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .exp:first-child { padding-top: 0; }
-    .exp:last-child { border-bottom: none; }
-
-    .exp-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--muted-2);
-      padding-top: 4px;
-    }
-
-    .exp h3 {
-      font-family: 'Lora', Georgia, serif;
-      font-size: 1.12rem;
-      font-weight: 500;
-      color: var(--ink);
-    }
-
-    .exp-org {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .exp p {
-      font-size: 0.94rem;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 640px;
-    }
-
-    /* COURSEWORK */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .info-card {
+    /* ---------- Feature (research + projects) ---------- */
+    .feature {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 26px 28px;
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .feature + .feature { margin-top: 22px; }
+    .feature-body {
+      display: grid; grid-template-columns: 1fr 300px;
+      gap: 44px; padding: 34px 36px;
+    }
+    .feature h3 {
+      font-size: 1.5rem; font-weight: 700; letter-spacing: -0.015em;
+      font-variation-settings: "wdth" 108;
+      line-height: 1.2; margin-bottom: 6px;
+    }
+    .badge {
+      display: inline-block; font-size: 0.82rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+      background: var(--copper-soft); color: var(--copper);
+    }
+    .badge.quiet { background: color-mix(in srgb, var(--mask) 12%, transparent); color: var(--mask); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .badge.quiet { color: #7fd0a8; }
+    }
+    .summary { font-size: 1.06rem; margin-bottom: 18px; max-width: 38em; }
+    .feature h4 { font-size: 0.95rem; font-weight: 700; margin: 20px 0 8px; }
+    .feature ul.points { list-style: none; display: grid; gap: 8px; max-width: 38em; }
+    .feature ul.points li { padding-left: 20px; position: relative; color: var(--muted); }
+    .feature ul.points li::before {
+      content: ""; position: absolute; left: 2px; top: 0.62em;
+      width: 8px; height: 8px; border-radius: 50%;
+      border: 2px solid var(--copper);
+    }
+    .feature ul.points strong { color: var(--ink); font-weight: 600; }
+
+    .meta { display: grid; gap: 16px; align-content: start; font-size: 0.95rem; }
+    .meta dt { color: var(--muted); font-size: 0.85rem; }
+    .meta dd { font-weight: 500; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .chip {
+      font-size: 0.82rem; font-weight: 500;
+      padding: 3px 9px; border-radius: 5px;
+      background: var(--paper); border: 1px solid var(--rule);
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .links .btn { padding: 8px 13px; font-size: 0.88rem; }
+
+    .diagram {
+      border-top: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 26px 36px 22px;
+    }
+    .diagram figcaption {
+      font-size: 0.88rem; color: var(--muted); margin-top: 12px;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .key { display: inline-block; width: 22px; height: 10px; border-radius: 3px; background: var(--copper); }
+    .diagram svg { width: 100%; height: auto; }
+    .diagram .node { fill: var(--surface); stroke: var(--rule); stroke-width: 1.5; }
+    .diagram .node.mine { stroke: var(--copper); stroke-width: 2.5; fill: var(--copper-soft); }
+    .diagram .t { fill: var(--ink); font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 600; }
+    .diagram .s { fill: var(--muted); font-family: 'Archivo', sans-serif; font-size: 12px; }
+    .diagram .wire { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+    .diagram .wire.mine { stroke: var(--copper); stroke-width: 2.4; }
+    .diagram .arrow { fill: var(--muted); }
+    .diagram .arrow.mine { fill: var(--copper); }
+    .diagram-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .diagram-scroll svg { min-width: 640px; }
+
+    .small-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--rule);
+      border-radius: 14px; padding: 28px 30px;
+    }
+    .card h3 { font-size: 1.22rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+    .card p { color: var(--muted); margin-bottom: 14px; }
+
+    /* ---------- Experience ---------- */
+    .timeline { list-style: none; border-left: 2px solid var(--rule); margin-left: 6px; }
+    .timeline li { position: relative; padding: 0 0 34px 30px; }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -8px; top: 6px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--paper); border: 2.5px solid var(--copper);
+    }
+    .role-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .timeline h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+    .when { color: var(--muted); font-size: 0.93rem; white-space: nowrap; }
+    .org { color: var(--muted); margin-bottom: 8px; }
+    .timeline p { max-width: 40em; }
+
+    /* ---------- Education & skills ---------- */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .card h4 { font-size: 0.95rem; font-weight: 700; margin: 22px 0 10px; }
+    .card h4:first-of-type { margin-top: 18px; }
+    .courses { list-style: none; display: grid; gap: 7px; }
+    .courses li { display: flex; justify-content: space-between; gap: 12px; }
+    .courses .note { color: var(--muted); font-size: 0.88rem; white-space: nowrap; }
+    .edu-line { color: var(--muted); }
+    .edu-line strong { color: var(--ink); }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      margin-top: 96px;
+      background: var(--mask);
+      color: #fff;
+      border-radius: 16px;
+      padding: 52px 48px;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center;
+    }
+    .contact h2 { color: #fff; }
+    .contact p { color: #d6e8df; margin-top: 10px; max-width: 30em; }
+    .contact-links { display: grid; gap: 10px; }
+    .contact-links a {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      color: #fff; text-decoration: none; font-weight: 600;
+      padding: 14px 18px; border-radius: 9px;
+      border: 1.5px solid rgba(255,255,255,0.28);
+    }
+    .contact-links a:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+    .contact-links span { font-weight: 400; color: #cfe3d9; font-size: 0.92rem; }
+    .contact :focus-visible { outline-color: #fff; }
+
+    footer {
+      padding: 34px 0 48px; color: var(--muted); font-size: 0.88rem;
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
 
-    .info-card h3 {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.76rem;
-      color: var(--muted-2);
-      letter-spacing: 0.04em;
-      margin-bottom: 18px;
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .board-wrap { max-width: 460px; }
+      .feature-body { grid-template-columns: 1fr; gap: 26px; }
+      .facts { grid-template-columns: 1fr 1fr; }
+      .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+      .fact:nth-child(n+3) { border-top: 1px solid var(--rule); }
+      .contact { grid-template-columns: 1fr; padding: 40px 30px; }
     }
-
-    .info-card h3:not(:first-child) { margin-top: 26px; }
-
-    .course-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
+    @media (max-width: 720px) {
+      .site-nav a:not(.nav-cta) { display: none; }
+      .small-grid, .two-col { grid-template-columns: 1fr; }
     }
-
-    .course-list li {
-      font-size: 0.95rem;
-      color: var(--muted);
-      padding-left: 14px;
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .course-list li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--border-strong);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-    }
-
-    .course-list li span:first-child { padding-left: 6px; }
-
-    .course-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted-2);
-      white-space: nowrap;
-      padding-top: 3px;
-    }
-
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-pill {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 5px 11px;
-      border-radius: var(--radius);
-    }
-
-    /* CONTACT */
-    .contact-block { padding: 8px 0 0; }
-
-    .contact-block p {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 520px;
-      margin-bottom: 28px;
-      line-height: 1.75;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    /* FOOTER */
-    .footer {
-      margin-top: 80px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer p {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.76rem;
-      color: var(--muted-2);
-    }
-
-    /* FOCUS */
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: var(--radius);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 800px) {
-      .hero-body { grid-template-columns: 1fr; gap: 36px; }
-      .two-col { grid-template-columns: 1fr; }
-      .nav { flex-direction: column; align-items: flex-start; gap: 14px; }
-      .project-header { flex-direction: column; gap: 8px; }
-      .exp { grid-template-columns: 1fr; gap: 6px; }
-    }
-
-    @media (max-width: 560px) {
-      .container { padding: 0 16px 80px; }
-      h1 { font-size: 3rem; }
-      .project { padding: 24px 20px; }
-      .info-card { padding: 22px 20px; }
-      .footer { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 16px; }
+      body { font-size: 16px; }
+      .hero { padding-top: 48px; padding-bottom: 40px; }
+      .feature-body { padding: 26px 20px; }
+      .diagram { padding: 20px; }
+      .card { padding: 24px 20px; }
+      .facts { grid-template-columns: 1fr; }
+      .fact, .fact + .fact { padding: 14px 0; border-left: 0; }
+      .fact + .fact { border-top: 1px solid var(--rule); }
+      .contact { padding: 32px 22px; }
     }
 
     @media print {
-      .nav-links, .hero-cta, .availability { display: none; }
-      body { background: #fff; }
-      section { padding-top: 32px; }
+      .site-header, .hero-actions, .board-wrap, .skip { display: none; }
+      body { background: #fff; color: #000; font-size: 12pt; }
+      section { padding-top: 28px; }
+      .hero { padding-top: 0; }
+      .feature, .card { break-inside: avoid; }
+      .contact { background: none; color: #000; padding: 0; border: 0; }
+      .contact h2, .contact-links a { color: #000; }
+      .contact p, .contact-links span { color: #333; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <a class="skip" href="#main">Skip to content</a>
 
-    <nav class="nav" aria-label="Main">
-      <div class="nav-name">caleb wiese</div>
-      <div class="nav-links">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">Caleb Wiese</a>
+      <nav class="site-nav" aria-label="Main">
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
-        <a href="#coursework">Coursework</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="Caleb-Wiese-Resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume ↗</a>
-      </div>
-    </nav>
+        <a class="nav-cta" href="Caleb-Wiese-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
 
-    <header class="hero">
-      <div class="availability">Seeking Summer 2027 internships</div>
-      <div class="hero-label">Electrical engineering — University of Virginia — Class of 2028</div>
-      <h1>Caleb<br><em>Wiese.</em></h1>
-
-      <div class="hero-body">
-        <div class="hero-copy">
-          <p>
-            I'm an electrical engineering student at the <strong>University of Virginia</strong>
-            focused on <strong>hardware</strong> — PCB design, digital logic, and embedded systems.
-            I like building things that work outside the lab, from award-winning scam-detection
-            hardware to Fourier-based audio processing.
+  <main id="main">
+    <!-- HERO -->
+    <div class="wrap hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <p class="status">Looking for Summer 2027 hardware internships</p>
+          <h1>Caleb Wiese</h1>
+          <p class="lede">
+            Electrical engineering student at the <strong>University of Virginia</strong>,
+            graduating May 2028. I design hardware: <strong>PCBs, embedded systems, and
+            digital logic</strong>. Right now I'm researching EMI noise cancellation for a
+            portable MRI scanner.
           </p>
-          <p>
-            Right now I'm doing undergraduate research on <strong>EMI noise cancellation for a
-            portable MRI system</strong>, and I'm looking for Summer 2027 internships in
-            hardware / digital design, embedded systems, or power.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="Caleb-Wiese-Resume.pdf" target="_blank" rel="noopener">View resume</a>
-            <a class="btn" href="mailto:calebwiese18@gmail.com">Email me</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="Caleb-Wiese-Resume.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+              View resume
+            </a>
+            <a class="btn" href="mailto:calebwiese18@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Email
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/caleb-wiese" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zm7 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.35h-4v-4.74c0-1.13-.02-2.59-1.58-2.59-1.58 0-1.82 1.23-1.82 2.5v4.83h-4z"/></svg>
+              LinkedIn
+            </a>
+            <a class="btn" href="https://github.com/calebwiese18" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+              GitHub
+            </a>
           </div>
         </div>
 
-        <aside class="hero-aside" aria-label="Quick facts">
-          <div class="hero-aside-row">
-            <span class="hero-aside-label">degree</span>
-            <span class="hero-aside-value">B.S. Electrical Engineering, UVA</span>
-          </div>
-          <div class="hero-aside-row">
-            <span class="hero-aside-label">expected graduation</span>
-            <span class="hero-aside-value">May 2028</span>
-          </div>
-          <div class="hero-aside-row">
-            <span class="hero-aside-label">gpa</span>
-            <span class="hero-aside-value">3.46 / 4.00</span>
-          </div>
-          <div class="hero-aside-row">
-            <span class="hero-aside-label">focus</span>
-            <span class="hero-aside-value">PCB design, digital design, embedded systems</span>
-          </div>
-          <div class="hero-aside-row">
-            <span class="hero-aside-label">looking for</span>
-            <span class="hero-aside-value">Summer 2027 internship — anywhere in the US</span>
-          </div>
-        </aside>
-      </div>
-    </header>
+        <!-- Signature visual: a small PCB routing his focus areas -->
+        <div class="board-wrap">
+          <svg class="board" viewBox="0 0 440 340" role="img" aria-labelledby="board-title">
+            <title id="board-title">Illustration of a circuit board with traces routed to four focus areas: PCB design, embedded systems, digital logic, and signals.</title>
+            <defs>
+              <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="3"/>
+              </pattern>
+            </defs>
+            <rect x="6" y="6" width="428" height="328" rx="18" fill="#1d5a43"/>
+            <rect x="6" y="6" width="428" height="328" rx="18" fill="url(#hatch)"/>
+            <rect x="14" y="14" width="412" height="312" rx="13" fill="none" stroke="#2f7a5c" stroke-width="1"/>
+            <!-- mounting holes -->
+            <g fill="#0f2f23" stroke="#c9884f" stroke-width="3">
+              <circle cx="34" cy="34" r="8"/><circle cx="406" cy="34" r="8"/>
+              <circle cx="34" cy="306" r="8"/><circle cx="406" cy="306" r="8"/>
+            </g>
 
+            <!-- traces -->
+            <path class="trace" style="--len:190; --d:.1s" d="M190 140 H140 L110 110 H64"/>
+            <path class="trace" style="--len:190; --d:.25s" d="M190 200 H140 L110 230 H64"/>
+            <path class="trace" style="--len:190; --d:.4s" d="M250 140 H300 L330 110 H376"/>
+            <path class="trace" style="--len:190; --d:.55s" d="M250 200 H300 L330 230 H376"/>
+            <path class="trace" style="--len:120; --d:.7s; stroke-width:2" d="M220 230 V280 H170"/>
+            <path class="trace" style="--len:120; --d:.8s; stroke-width:2" d="M220 110 V62 H270"/>
+
+            <!-- pads -->
+            <g style="--d:.1s"><rect class="pad" x="50" y="102" width="16" height="16" rx="3"/></g>
+            <g style="--d:.25s"><rect class="pad" x="50" y="222" width="16" height="16" rx="3"/></g>
+            <g style="--d:.4s"><circle class="pad" cx="382" cy="110" r="8"/></g>
+            <g style="--d:.55s"><circle class="pad" cx="382" cy="230" r="8"/></g>
+            <g style="--d:.7s"><circle class="pad" cx="166" cy="280" r="5"/></g>
+            <g style="--d:.8s"><circle class="pad" cx="274" cy="62" r="5"/></g>
+
+            <!-- chip -->
+            <g>
+              <g fill="#c9884f">
+                <rect x="180" y="128" width="12" height="5"/><rect x="180" y="148" width="12" height="5"/>
+                <rect x="180" y="168" width="12" height="5"/><rect x="180" y="188" width="12" height="5"/>
+                <rect x="248" y="128" width="12" height="5"/><rect x="248" y="148" width="12" height="5"/>
+                <rect x="248" y="168" width="12" height="5"/><rect x="248" y="188" width="12" height="5"/>
+              </g>
+              <rect x="190" y="112" width="60" height="116" rx="5" fill="#111a16"/>
+              <circle cx="201" cy="123" r="3" fill="#2a3a33"/>
+              <text class="silk" x="220" y="176" text-anchor="middle" font-size="17" font-weight="700" fill="#e7ece9">CW</text>
+              <text class="silk" x="220" y="246" text-anchor="middle" font-size="11" opacity=".85">U1</text>
+            </g>
+
+            <!-- silkscreen labels -->
+            <g class="pad-label" style="--d:.1s"><text class="silk" x="44" y="92" font-size="13" font-weight="600">PCB design</text></g>
+            <g class="pad-label" style="--d:.25s"><text class="silk" x="44" y="262" font-size="13" font-weight="600">Embedded</text></g>
+            <g class="pad-label" style="--d:.4s"><text class="silk" x="398" y="92" font-size="13" font-weight="600" text-anchor="end">Digital logic</text></g>
+            <g class="pad-label" style="--d:.55s"><text class="silk" x="398" y="262" font-size="13" font-weight="600" text-anchor="end">Signals</text></g>
+
+            <!-- board marking -->
+            <text class="silk" x="44" y="318" font-size="11" opacity=".75">UVA EE  rev 2028</text>
+            <rect class="silk-line" x="330" y="300" width="64" height="20" rx="3"/>
+            <text class="silk" x="362" y="314" font-size="10.5" text-anchor="middle" opacity=".9">C. WIESE</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <dl class="facts">
+        <div class="fact"><dt>Degree</dt><dd>B.S. Electrical Engineering, University of Virginia</dd></div>
+        <div class="fact"><dt>Graduation</dt><dd>May 2028</dd></div>
+        <div class="fact"><dt>GPA</dt><dd>3.46 / 4.00</dd></div>
+        <div class="fact"><dt>Seeking</dt><dd>Summer 2027 internship, anywhere in the US</dd></div>
+      </dl>
+    </div>
+
+    <!-- RESEARCH -->
     <section id="research">
-      <div class="section-header">
-        <span class="section-num">01</span>
-        <h2>Research</h2>
-      </div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Research</h2>
+        </div>
 
-      <div class="project-list">
-        <article class="project">
-          <div class="project-header">
-            <h3>Portable MRI — EMI Noise Cancellation</h3>
-            <span class="project-status active">Fall 2026 – present</span>
-          </div>
-          <div class="project-meta">Undergraduate Researcher · Professor Jacob · University of Virginia</div>
-          <p>
-            Part of a four-person undergraduate team working on a low-cost portable MRI system.
-            Without a shielded room, portable MRI is highly sensitive to electromagnetic
-            interference from the surrounding environment, and my work focuses on detecting and
-            cancelling that EMI noise so the scanner can produce usable signal outside a
-            traditional MRI suite.
-          </p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="tag">EMI</span>
-              <span class="tag">Noise cancellation</span>
-              <span class="tag">Signal processing</span>
-              <span class="tag">Medical devices</span>
+        <article class="feature">
+          <div class="feature-body">
+            <div>
+              <span class="badge quiet">Ongoing since August 2026</span>
+              <h3>EMI noise cancellation for a portable MRI</h3>
+              <p class="summary">
+                Portable MRI scanners run without the shielded room a hospital scanner sits in,
+                so electromagnetic interference from the surroundings reaches the signal the scanner
+                is trying to measure. My work on the team focuses on cancelling that interference.
+              </p>
+              <ul class="points">
+                <li>Researching and developing <strong>EMI noise-cancellation</strong> approaches for the scanner's receive signal.</li>
+                <li>Working in a <strong>four-person undergraduate team</strong> under Professor Jacob on a semester-long project.</li>
+                <li>Started on the hardware side with <strong>PCB design</strong> before moving to the EMI problem.</li>
+              </ul>
             </div>
+            <dl class="meta">
+              <div><dt>Role</dt><dd>Research Assistant</dd></div>
+              <div><dt>Where</dt><dd>University of Virginia, with Professor Jacob</dd></div>
+              <div><dt>Team</dt><dd>4 students</dd></div>
+              <div>
+                <dt>Areas</dt>
+                <dd class="chips">
+                  <span class="chip">EMI</span><span class="chip">Noise cancellation</span>
+                  <span class="chip">Signal processing</span><span class="chip">PCB design</span>
+                </dd>
+              </div>
+            </dl>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects">
-      <div class="section-header">
-        <span class="section-num">02</span>
-        <h2>Projects</h2>
-      </div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Projects</h2>
+        </div>
 
-      <div class="project-list">
+        <article class="feature">
+          <div class="feature-body">
+            <div>
+              <span class="badge">3rd place of 222 teams, HooHacks 2026</span>
+              <h3>ScamShield</h3>
+              <p class="summary">
+                A Raspberry Pi device that listens to phone calls on speakerphone, flags scams aimed at
+                older adults in real time, and warns both the caller and their family. Built by a team
+                of three in 24 hours, competing against about 750 students.
+              </p>
+              <h4>What I built</h4>
+              <ul class="points">
+                <li>Engineered the <strong>alert notification pipeline end to end</strong>: once a call is flagged, it triggers a spoken warning, local LED and buzzer feedback, and a message to trusted family members.</li>
+                <li>Built the <strong>secure family dashboard</strong> where relatives see device status, alerts, call transcripts, and timestamps.</li>
+                <li>Integrated <strong>ElevenLabs voice synthesis</strong> to generate spoken warnings tailored to the call.</li>
+              </ul>
+              <h4>How it works</h4>
+              <ul class="points">
+                <li>Speech is transcribed on the Pi and scored 0–100 for scam risk by Google Gemini, with a keyword check as a fallback if the AI is slow.</li>
+                <li>Score thresholds and cooldowns keep false alarms down, and a physical button lets the user raise an alert manually.</li>
+              </ul>
+            </div>
+            <dl class="meta">
+              <div><dt>Role</dt><dd>Alert pipeline and family dashboard</dd></div>
+              <div><dt>Team</dt><dd>3 students, 24 hours</dd></div>
+              <div>
+                <dt>Hardware</dt>
+                <dd class="chips">
+                  <span class="chip">Raspberry Pi</span><span class="chip">Grove sensors</span><span class="chip">Google Nest</span>
+                </dd>
+              </div>
+              <div>
+                <dt>Software</dt>
+                <dd class="chips">
+                  <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Next.js</span>
+                  <span class="chip">TypeScript</span><span class="chip">Gemini API</span><span class="chip">ElevenLabs</span>
+                  <span class="chip">Twilio</span>
+                </dd>
+              </div>
+              <div>
+                <dt>Links</dt>
+                <dd class="links">
+                  <a class="btn" href="https://devpost.com/software/scamshield-87rbxe" target="_blank" rel="noopener">Devpost</a>
+                  <a class="btn" href="https://github.com/TristanGru/ScamShield" target="_blank" rel="noopener">Code</a>
+                </dd>
+              </div>
+            </dl>
+          </div>
 
-        <article class="project">
-          <div class="project-header">
-            <h3>ScamShield</h3>
-            <span class="project-status award">3rd of 222 teams — HooHacks 2026</span>
-          </div>
-          <div class="project-meta">Hackathon project · 3-person team</div>
-          <p>
-            A real-time scam call detection device built for older adults, combining a
-            Raspberry Pi–based hardware unit with live AI scam detection and family alerts.
-          </p>
-          <ul class="highlights">
-            <li>Placed <strong>3rd out of 222 teams</strong> at HooHacks 2026.</li>
-            <li>Built the <strong>secure family dashboard</strong> that lets trusted relatives remotely monitor device status, alerts, call transcripts, and timestamps.</li>
-            <li>Integrated hardware and software into a working end-to-end system within the hackathon window.</li>
-          </ul>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="tag">Raspberry Pi</span>
-              <span class="tag">Embedded</span>
-              <span class="tag">AI</span>
-              <span class="tag">Dashboard</span>
+          <figure class="diagram">
+            <div class="diagram-scroll">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="ss-title">
+                <title id="ss-title">ScamShield system diagram. A phone call on speakerphone goes to the Raspberry Pi, which transcribes it and gets a risk score from Gemini. If the call is flagged, the alert pipeline Caleb built sends a spoken warning through a Nest speaker, lights LEDs and a buzzer, messages family through Twilio, and logs the event to the family dashboard he built.</title>
+                <defs>
+                  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0 L10 5 L0 10 z"/></marker>
+                  <marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow mine" d="M0 0 L10 5 L0 10 z"/></marker>
+                </defs>
+
+                <!-- call -->
+                <rect class="node" x="10" y="85" width="140" height="60" rx="10"/>
+                <text class="t" x="80" y="112" text-anchor="middle">Phone call</text>
+                <text class="s" x="80" y="130" text-anchor="middle">on speakerphone</text>
+
+                <!-- pi -->
+                <rect class="node" x="200" y="85" width="160" height="60" rx="10"/>
+                <text class="t" x="280" y="112" text-anchor="middle">Raspberry Pi</text>
+                <text class="s" x="280" y="130" text-anchor="middle">local transcription</text>
+
+                <!-- gemini -->
+                <rect class="node" x="200" y="10" width="160" height="50" rx="10"/>
+                <text class="t" x="280" y="32" text-anchor="middle">Gemini risk score</text>
+                <text class="s" x="280" y="49" text-anchor="middle">0–100, keyword fallback</text>
+
+                <!-- alert pipeline (mine) -->
+                <rect class="node mine" x="420" y="78" width="170" height="74" rx="10"/>
+                <text class="t" x="505" y="108" text-anchor="middle">Alert pipeline</text>
+                <text class="s" x="505" y="127" text-anchor="middle">thresholds, cooldowns,</text>
+                <text class="s" x="505" y="142" text-anchor="middle">manual button</text>
+
+                <!-- outputs -->
+                <rect class="node mine" x="660" y="6" width="230" height="44" rx="10"/>
+                <text class="t" x="775" y="33" text-anchor="middle">Spoken warning (ElevenLabs)</text>
+                <rect class="node mine" x="660" y="62" width="230" height="44" rx="10"/>
+                <text class="t" x="775" y="89" text-anchor="middle">LEDs and buzzer</text>
+                <rect class="node mine" x="660" y="118" width="230" height="44" rx="10"/>
+                <text class="t" x="775" y="145" text-anchor="middle">Family message (Twilio)</text>
+                <rect class="node mine" x="660" y="174" width="230" height="44" rx="10"/>
+                <text class="t" x="775" y="201" text-anchor="middle">Family dashboard (Next.js)</text>
+
+                <!-- wires -->
+                <path class="wire" d="M150 115 H196" marker-end="url(#ah)"/>
+                <path class="wire" d="M262 85 V64" marker-end="url(#ah)"/>
+                <path class="wire" d="M298 60 V81" marker-end="url(#ah)"/>
+                <path class="wire" d="M360 115 H416" marker-end="url(#ah)"/>
+                <path class="wire mine" d="M590 115 H620 V28 H656" marker-end="url(#ahm)"/>
+                <path class="wire mine" d="M620 84 H656" marker-end="url(#ahm)"/>
+                <path class="wire mine" d="M620 115 V140 H656" marker-end="url(#ahm)"/>
+                <path class="wire mine" d="M620 140 V196 H656" marker-end="url(#ahm)"/>
+              </svg>
             </div>
-            <div class="project-links">
-              <a href="https://devpost.com/software/scamshield-87rbxe" target="_blank" rel="noopener">Devpost ↗</a>
-              <a href="https://github.com/TristanGru/ScamShield" target="_blank" rel="noopener">GitHub ↗</a>
-            </div>
-          </div>
+            <figcaption><span class="key" aria-hidden="true"></span> Parts I built</figcaption>
+          </figure>
         </article>
 
-        <article class="project">
-          <div class="project-header">
-            <h3>Fourier Voice Changer</h3>
-            <span class="project-status">In development</span>
-          </div>
-          <div class="project-meta">Signals &amp; Systems final project</div>
-          <p>
-            A voice changer that transforms recorded speech — robotic, deeper, higher-pitched,
-            and more — by analyzing and modifying its frequency content with Fourier series.
-            A runnable Jupyter notebook will be posted here when it's complete.
-          </p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="tag">Fourier analysis</span>
-              <span class="tag">Audio DSP</span>
-              <span class="tag">Python</span>
+        <div class="small-grid">
+          <article class="card">
+            <span class="badge quiet">In progress</span>
+            <h3>Fourier voice changer</h3>
+            <p>
+              A Signals and Systems final project that changes how a recorded voice sounds (robotic,
+              deeper, higher) by analyzing and reshaping its frequency content with Fourier series.
+              A runnable notebook goes up here when it's done.
+            </p>
+            <div class="chips">
+              <span class="chip">Fourier analysis</span><span class="chip">Audio DSP</span><span class="chip">Python</span>
             </div>
-          </div>
-        </article>
+          </article>
 
+          <article class="card">
+            <span class="badge quiet">Spring 2027</span>
+            <h3>Next up: PCB design</h3>
+            <p>
+              PCB design is the part of electrical engineering I enjoy most. I'm taking UVA's
+              Printed Circuit Board Design elective next semester and will post board layouts
+              here as they come together.
+            </p>
+            <div class="chips">
+              <span class="chip">KiCad</span><span class="chip">Schematic capture</span><span class="chip">Layout</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience">
-      <div class="section-header">
-        <span class="section-num">03</span>
-        <h2>Experience</h2>
-      </div>
-
-      <div class="exp-list">
-        <div class="exp">
-          <div class="exp-date">Summers 2025 – 2026</div>
-          <div>
-            <h3>Head Lifeguard</h3>
-            <div class="exp-org">Albemarle County Parks and Recreation</div>
-            <p>
-              Led a team of lifeguards, managing staffing and safety coverage. Responsible for
-              staying alert and acting decisively in high-pressure situations, including
-              performing a rescue of a struggling swimmer.
-            </p>
-          </div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Experience</h2>
         </div>
+        <ol class="timeline">
+          <li>
+            <div class="role-head">
+              <h3>Research Assistant</h3>
+              <span class="when">Aug 2026 to present</span>
+            </div>
+            <p class="org">University of Virginia, portable MRI project</p>
+            <p>Hardware research on a portable MRI system under Professor Jacob, now focused on EMI noise cancellation.</p>
+          </li>
+          <li>
+            <div class="role-head">
+              <h3>Head Lifeguard</h3>
+              <span class="when">Summers 2025 and 2026</span>
+            </div>
+            <p class="org">Albemarle County Parks and Recreation, Charlottesville, VA</p>
+            <p>Led a team of lifeguards across two seasons at a high-traffic public facility, coordinating daily operations and safety protocols. Served as the on-site authority for emergency decisions and incident response.</p>
+          </li>
+          <li>
+            <div class="role-head">
+              <h3>Data Specialist</h3>
+              <span class="when">Summer 2024</span>
+            </div>
+            <p class="org">Blackmarker, Charlottesville, VA</p>
+            <p>Helped develop AI-powered document redaction software and tagged training data for a random forest model on AWS SageMaker.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-        <div class="exp">
-          <div class="exp-date">Summer 2024</div>
-          <div>
-            <h3>Data Specialist</h3>
-            <div class="exp-org">Blackmarker · Charlottesville, VA</div>
-            <p>
-              Supported an AI-powered document redaction product by tagging and preparing
-              training data for a machine learning model built on AWS SageMaker.
-            </p>
+    <!-- EDUCATION & SKILLS -->
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Education and skills</h2>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <h3>University of Virginia</h3>
+            <p class="edu-line">School of Engineering and Applied Science<br><strong>B.S. Electrical Engineering</strong>, expected May 2028<br>GPA 3.46 / 4.00</p>
+            <h4>Relevant coursework</h4>
+            <ul class="courses">
+              <li><span>Introduction to Embedded Computer Systems</span></li>
+              <li><span>Solid State Devices</span></li>
+              <li><span>Digital Logic Design</span></li>
+              <li><span>Electronics</span></li>
+              <li><span>Signals and Systems</span></li>
+              <li><span>Applied Circuits</span></li>
+              <li><span>Introduction to Machine Learning</span></li>
+              <li><span>Computer Systems and Organization 1</span></li>
+              <li><span>Probability (APMA 3100)</span><span class="note">Fall 2026</span></li>
+              <li><span>Printed Circuit Board Design</span><span class="note">Spring 2027</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Tools and languages</h3>
+            <h4>Hardware description and digital design</h4>
+            <div class="chips">
+              <span class="chip">VHDL</span><span class="chip">Verilog</span><span class="chip">Quartus</span><span class="chip">ModelSim</span>
+            </div>
+            <h4>Circuits and PCB</h4>
+            <div class="chips">
+              <span class="chip">KiCad</span><span class="chip">WaveForms</span><span class="chip">Raspberry Pi</span>
+            </div>
+            <h4>Programming</h4>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">Java</span>
+              <span class="chip">TypeScript</span><span class="chip">FastAPI</span>
+            </div>
+            <h4>Everyday tools</h4>
+            <div class="chips">
+              <span class="chip">VS Code</span><span class="chip">Google Colab</span><span class="chip">Git and GitHub</span><span class="chip">Excel</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="coursework">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <h2>Coursework &amp; Skills</h2>
-      </div>
-
-      <div class="two-col">
-        <div class="info-card">
-          <h3>Completed coursework</h3>
-          <ul class="course-list">
-            <li><span>Electronics</span></li>
-            <li><span>Signals &amp; Systems</span></li>
-            <li><span>Digital Logic Design</span></li>
-            <li><span>Applied Circuits</span></li>
-            <li><span>Computer Systems &amp; Organization 1</span></li>
-            <li><span>Engineering Foundations 2</span></li>
-          </ul>
-
-          <h3>In progress &amp; planned</h3>
-          <ul class="course-list">
-            <li><span>Probability (APMA 3100)</span><span class="course-note">Fall 2026</span></li>
-            <li><span>Printed Circuit Board Design</span><span class="course-note">Spring 2027</span></li>
-          </ul>
+    <!-- CONTACT -->
+    <div class="wrap">
+      <section id="contact" class="contact" style="padding-top:52px">
+        <div>
+          <h2>Let's talk</h2>
+          <p>I'm looking for Summer 2027 internships in hardware and digital design, embedded systems, or power. Email is the fastest way to reach me.</p>
         </div>
-
-        <div class="info-card">
-          <h3>Languages</h3>
-          <div class="skills-grid">
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">MATLAB</span>
-            <span class="skill-pill">Java</span>
-            <span class="skill-pill">VHDL</span>
-            <span class="skill-pill">Verilog</span>
-          </div>
-
-          <h3>Hardware &amp; design tools</h3>
-          <div class="skills-grid">
-            <span class="skill-pill">KiCad</span>
-            <span class="skill-pill">Quartus</span>
-            <span class="skill-pill">ModelSim</span>
-            <span class="skill-pill">WaveForms</span>
-            <span class="skill-pill">Raspberry Pi</span>
-          </div>
-
-          <h3>Other</h3>
-          <div class="skills-grid">
-            <span class="skill-pill">Excel</span>
-            <span class="skill-pill">Jupyter</span>
-            <span class="skill-pill">Git / GitHub</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-header">
-        <span class="section-num">05</span>
-        <h2>Contact</h2>
-      </div>
-
-      <div class="contact-block">
-        <p>
-          I'm actively looking for Summer 2027 internships in hardware, digital design,
-          embedded systems, and power. The best way to reach me is by email — I'm happy to
-          share more about any of my projects.
-        </p>
         <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:calebwiese18@gmail.com">calebwiese18@gmail.com</a>
-          <a class="btn" href="https://www.linkedin.com/in/caleb-wiese" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="btn" href="https://github.com/calebwiese18" target="_blank" rel="noopener">GitHub ↗</a>
-          <a class="btn" href="Caleb-Wiese-Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+          <a href="mailto:calebwiese18@gmail.com">Email <span>calebwiese18@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/caleb-wiese" target="_blank" rel="noopener">LinkedIn <span>in/caleb-wiese</span></a>
+          <a href="https://github.com/calebwiese18" target="_blank" rel="noopener">GitHub <span>calebwiese18</span></a>
+          <a href="Caleb-Wiese-Resume.pdf" target="_blank" rel="noopener">Resume <span>PDF</span></a>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+  </main>
 
-    <footer class="footer">
-      <p>Caleb Wiese — UVA Electrical Engineering &rsquo;28</p>
-      <p>Charlottesville, VA</p>
+  <div class="wrap">
+    <footer>
+      <span>Caleb Wiese, University of Virginia Electrical Engineering, Class of 2028</span>
+      <span>Charlottesville, VA</span>
     </footer>
-
   </div>
 </body>
 </html>
